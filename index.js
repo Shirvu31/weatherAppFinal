@@ -134,12 +134,12 @@ function displayForecast(response) {
                 forecastDay.dt
               )}</div>
                 <div class="weatherForecastTemp">
-                 <span class="weatherForecastTempMax"> ${
+                 <span class="weatherForecastTempMax"> ${Math.round(
                    forecastDay.temp.max
-                 }° </span>
-                 <span class="weatherForecastTempMin"> ${
+                 )}° /</span>
+                 <span class="weatherForecastTempMin"> ${Math.round(
                    forecastDay.temp.min
-                 }° </span>
+                 )}° </span>
                  <img 
                  src ="http://openweathermap.org/img/wn/${
                    forecastDay.weather[0].icon
