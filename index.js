@@ -96,20 +96,6 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
-function displayFahTemp(event) {
-  event.preventDefault();
-
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
-
-  let tempElement = document.querySelector("#temperature");
-  tempElement.innerHTML = Math.round(fahrenheitTemp);
-}
-function displayCelTemp(event) {
-  event.preventDefault();
-
-  let tempElement = document.querySelector("#temperature");
-  tempElement.innerHTML = Math.round(celsiusTemp);
-}
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -159,12 +145,6 @@ function displayForecast(response) {
 
   forecastElement.innerHTML = forecastHTML;
 }
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link ");
-fahrenheitLink.addEventListener("click", displayFahTemp);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelTemp);
 
 let dateElement = document.querySelector("#date");
 let currentTime = new Date();
