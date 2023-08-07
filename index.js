@@ -8,43 +8,7 @@ function formatDate(now) {
     minutes = `0${minutes}`;
   }
 
-  let dayIndex = now.getDay();
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = days[dayIndex];
-
-  let date = now.getDate();
-  if (date < 10) {
-    date = `0${date}`;
-  }
-
-  let monthIndex = now.getMonth();
-  let months = [
-    "Jan",
-    "Feb",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "Aug",
-    "Sept",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-
-  let month = months[monthIndex];
-  let year = now.getFullYear();
-
-  return `Updated on ${day}, ${date} ${month} ${year} at ${hours}:${minutes}`;
+  return `Updated today at ${hours}:${minutes}`;
 }
 
 function getForecast(coordinates) {
