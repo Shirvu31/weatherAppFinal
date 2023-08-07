@@ -47,6 +47,15 @@ function formatDate(now) {
   return `Updated on ${day}, ${date} ${month} ${year} at ${hours}:${minutes}`;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+  console.log(apiUrl);
+
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayWeatherCondition(response) {
   console.log(response.data);
   document.querySelector("#city").innerHTML = response.data.name;
@@ -60,6 +69,8 @@ function displayWeatherCondition(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  getForecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -100,7 +111,9 @@ function displayCelTemp(event) {
   tempElement.innerHTML = Math.round(celsiusTemp);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
+
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class= "row"> `;
@@ -115,10 +128,7 @@ function displayForecast() {
                 <div class="weatherForecastTemp">
                  <span class="weatherForecastTempMax"> 18° </span>
                  <span class="weatherForecastTempMin"> 13° </span>
-                 <img 
-                 src ="http://openweathermap.org/img/wn/@2x.png" 
-                            alt = "" 
-                            width = "40"/> 
+               
               </div>
             </div>
   `;
@@ -148,4 +158,3 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 let celsiusTemp = null;
 
 searchCity("Durban");
-displayForecast();
