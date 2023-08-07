@@ -50,7 +50,7 @@ function formatDate(now) {
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   console.log(apiUrl);
 
   axios.get(apiUrl).then(displayForecast);
@@ -111,23 +111,42 @@ function displayCelTemp(event) {
   tempElement.innerHTML = Math.round(celsiusTemp);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class= "row"> `;
 
-  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri"];
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       ` 
             <div class="col-2">
-              <div class="weatherForecastDate"> ${day}</div>
+              <div class="weatherForecastDate"> ${formatDay(
+                forecastDay.dt
+              )}</div>
                 <div class="weatherForecastTemp">
-                 <span class="weatherForecastTempMax"> 18° </span>
-                 <span class="weatherForecastTempMin"> 13° </span>
+                 <span class="weatherForecastTempMax"> ${
+                   forecastDay.temp.max
+                 }° </span>
+                 <span class="weatherForecastTempMin"> ${
+                   forecastDay.temp.min
+                 }° </span>
+                 <img 
+                 src ="http://openweathermap.org/img/wn/${
+                   forecastDay.weather[0].icon
+                 }@2x.png" 
+                 alt =""
+                 width = "40"
+                 />
                
               </div>
             </div>
