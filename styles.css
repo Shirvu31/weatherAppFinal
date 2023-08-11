@@ -20,6 +20,7 @@ h2 {
   padding: 10px auto;
   border-style: solid;
   border-radius: 10px;
+  opacity: 0.5;
 }
 
 h1 {
