@@ -63,15 +63,3 @@ a:hover {
   font-size: 15px;
   color: black;
 }
-
-.weatherForecastDate {
-  opacity: 0.5;
-}
-
-.weatherForecastTempMax {
-  font-size: 17px;
-}
-
-.weatherForecastTempMin {
-  opacity: 0.5;
-}
