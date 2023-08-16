@@ -63,3 +63,10 @@ a:hover {
   font-size: 15px;
   color: black;
 }
+
+@media (max-width: 576px) {
+  .weather-app {
+    display: flex;
+    justify-content: center;
+  }
+}
