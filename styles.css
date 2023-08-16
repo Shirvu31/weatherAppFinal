@@ -63,3 +63,15 @@ a:hover {
   font-size: 15px;
   color: black;
 }
+
+@media (max-width: 576px) {
+  .searchBtn {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .current-locattion-button {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
